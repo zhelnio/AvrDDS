@@ -6,10 +6,18 @@ Old. Simple. And almost without analog part. One of my first AVR devices. It was
 course. Published here as an artifact of my home made electronics.
 
 **Schematic**
-![Schematic](/board/scheme.png?raw=true "Schematic")
+![Schematic](/doc/schematic.png?raw=true "Schematic")
 
 **Board**
-![Board](/board/board.png?raw=true "Board")
+![Board](/doc/board.png?raw=true "Board")
+
+**Menu**
+
+![Main menu](/doc/1_main_menu.png?raw=true "Main menu")
+![Square signal (top)](/doc/2_square_menu_top.png?raw=true "Square signal (top)")
+![Square signal (bottom)](/doc/3_square_menu_bottom.png?raw=true "Square signal (bottom)")
+![DDS signal (top)](/doc/4_DDS_menu_top.png?raw=true "DDS signal (top)")
+![DDS signal (bottom)](/doc/5_DDS_menu_bottom.png?raw=true "DDS signal (bottom)")
 
 **Video of its work**
 
