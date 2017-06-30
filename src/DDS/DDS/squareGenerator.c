@@ -1,4 +1,4 @@
-/*
+п»ї/*
  * square.c
  *
  * Created: 02.01.2014 22:18:17
@@ -9,24 +9,24 @@
 
 // square
 
-// доступные значения делителя тактовой частоты
+// РґРѕСЃС‚СѓРїРЅС‹Рµ Р·РЅР°С‡РµРЅРёСЏ РґРµР»РёС‚РµР»СЏ С‚Р°РєС‚РѕРІРѕР№ С‡Р°СЃС‚РѕС‚С‹
 typedef enum { prsclr1 = 1, prsclr8 = 2, prsclr64 = 3, prsclr256 = 4, prsclr1024 = 5 } PrescalerValue;
 
-uint16_t SquarePeriod = 0;						//период сигнала
-uint16_t SquareTop = 0;							//продолжительность импульса, при значении 0 продолжительность импульса = продолжительности паузы
-PrescalerValue SquarePrescaler = prsclr1;		//настройка делителя тактовой частоты
-ParameterMode SquarePeriodMode = modeView;		//режимы просмотра/редактирования параметров
+uint16_t SquarePeriod = 0;						//РїРµСЂРёРѕРґ СЃРёРіРЅР°Р»Р°
+uint16_t SquareTop = 0;							//РїСЂРѕРґРѕР»Р¶РёС‚РµР»СЊРЅРѕСЃС‚СЊ РёРјРїСѓР»СЊСЃР°, РїСЂРё Р·РЅР°С‡РµРЅРёРё 0 РїСЂРѕРґРѕР»Р¶РёС‚РµР»СЊРЅРѕСЃС‚СЊ РёРјРїСѓР»СЊСЃР° = РїСЂРѕРґРѕР»Р¶РёС‚РµР»СЊРЅРѕСЃС‚Рё РїР°СѓР·С‹
+PrescalerValue SquarePrescaler = prsclr1;		//РЅР°СЃС‚СЂРѕР№РєР° РґРµР»РёС‚РµР»СЏ С‚Р°РєС‚РѕРІРѕР№ С‡Р°СЃС‚РѕС‚С‹
+ParameterMode SquarePeriodMode = modeView;		//СЂРµР¶РёРјС‹ РїСЂРѕСЃРјРѕС‚СЂР°/СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ РїР°СЂР°РјРµС‚СЂРѕРІ
 ParameterMode SquareTopMode = modeView;
 ParameterMode SquarePrescalerMode = modeView;
 
 //EEPROM
 
-uint16_t SquarePeriodEeprom	EEMEM;				// настройки для хранения в энергонезависимой памяти
+uint16_t SquarePeriodEeprom	EEMEM;				// РЅР°СЃС‚СЂРѕР№РєРё РґР»СЏ С…СЂР°РЅРµРЅРёСЏ РІ СЌРЅРµСЂРіРѕРЅРµР·Р°РІРёСЃРёРјРѕР№ РїР°РјСЏС‚Рё
 uint16_t SquareTopEeprom	EEMEM;
 PrescalerValue SquarePrescalerEeprom EEMEM;
 
-// продолжительность импульса не может быть больше периода сигнала
-// функция уменьшает продолжительность импульса при корректировки периода
+// РїСЂРѕРґРѕР»Р¶РёС‚РµР»СЊРЅРѕСЃС‚СЊ РёРјРїСѓР»СЊСЃР° РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ Р±РѕР»СЊС€Рµ РїРµСЂРёРѕРґР° СЃРёРіРЅР°Р»Р°
+// С„СѓРЅРєС†РёСЏ СѓРјРµРЅСЊС€Р°РµС‚ РїСЂРѕРґРѕР»Р¶РёС‚РµР»СЊРЅРѕСЃС‚СЊ РёРјРїСѓР»СЊСЃР° РїСЂРё РєРѕСЂСЂРµРєС‚РёСЂРѕРІРєРё РїРµСЂРёРѕРґР°
 inline void checkSquareTopValue()
 {
 	if(SquareTop !=0 && SquareTop > SquarePeriod)
@@ -36,7 +36,7 @@ inline void checkSquareTopValue()
 	}
 }
 
-// функции работы с Периодом
+// С„СѓРЅРєС†РёРё СЂР°Р±РѕС‚С‹ СЃ РџРµСЂРёРѕРґРѕРј
 inline void SquarePeriodInc()
 {
 	switch (SquarePeriodMode)
@@ -73,7 +73,7 @@ inline void SquarePeriodModeInc()
 	SquarePeriodMode--;
 }
 
-// функции работы с продолжительностью импульса
+// С„СѓРЅРєС†РёРё СЂР°Р±РѕС‚С‹ СЃ РїСЂРѕРґРѕР»Р¶РёС‚РµР»СЊРЅРѕСЃС‚СЊСЋ РёРјРїСѓР»СЊСЃР°
 inline void SquareTopInc()
 {
 	uint16_t newValue = 0xFFFF;
@@ -114,7 +114,7 @@ inline void SquareTopModeInc()
 	SquareTopMode--;
 }
 
-// функции работы с делителем тактовой частоты
+// С„СѓРЅРєС†РёРё СЂР°Р±РѕС‚С‹ СЃ РґРµР»РёС‚РµР»РµРј С‚Р°РєС‚РѕРІРѕР№ С‡Р°СЃС‚РѕС‚С‹
 inline void SquarePrescalerInc()
 {
 	if(SquarePrescaler == prsclr1024)
@@ -143,27 +143,27 @@ inline void SquarePrescalerModeInc()
 		SquarePrescalerMode = modeView;
 }
 
-//структура для преобразование тактов в мс и мкс
+//СЃС‚СЂСѓРєС‚СѓСЂР° РґР»СЏ РїСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёРµ С‚Р°РєС‚РѕРІ РІ РјСЃ Рё РјРєСЃ
 typedef struct 
 {
-	uint16_t minValue;		//минимальный период
-	uint16_t stepValue;		//приращение периода
-	uint8_t pointPosition;	//позиция "точки" в строке значения параметра
-	uint8_t measureUnit;	//единица измерения (мкс, мс)
-	uint8_t numPartLength;	//кол-во символов в цифровом представлении параметра
+	uint16_t minValue;		//РјРёРЅРёРјР°Р»СЊРЅС‹Р№ РїРµСЂРёРѕРґ
+	uint16_t stepValue;		//РїСЂРёСЂР°С‰РµРЅРёРµ РїРµСЂРёРѕРґР°
+	uint8_t pointPosition;	//РїРѕР·РёС†РёСЏ "С‚РѕС‡РєРё" РІ СЃС‚СЂРѕРєРµ Р·РЅР°С‡РµРЅРёСЏ РїР°СЂР°РјРµС‚СЂР°
+	uint8_t measureUnit;	//РµРґРёРЅРёС†Р° РёР·РјРµСЂРµРЅРёСЏ (РјРєСЃ, РјСЃ)
+	uint8_t numPartLength;	//РєРѕР»-РІРѕ СЃРёРјРІРѕР»РѕРІ РІ С†РёС„СЂРѕРІРѕРј РїСЂРµРґСЃС‚Р°РІР»РµРЅРёРё РїР°СЂР°РјРµС‚СЂР°
 } SquareConvertInfo;
 
-//ниже эти значения рассчитаны для 16МГц кварца
+//РЅРёР¶Рµ СЌС‚Рё Р·РЅР°С‡РµРЅРёСЏ СЂР°СЃСЃС‡РёС‚Р°РЅС‹ РґР»СЏ 16РњР“С† РєРІР°СЂС†Р°
 SquareConvertInfo convertInfo[5] = {{1250,625,4,'u',9},{10,5,5,'u',7},{8,4,3,'m',7},{32,16,4,'m',8},{128,64,4,'m',8}};
 
-//функции преобразования значения параметров в строковое представление
+//С„СѓРЅРєС†РёРё РїСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёСЏ Р·РЅР°С‡РµРЅРёСЏ РїР°СЂР°РјРµС‚СЂРѕРІ РІ СЃС‚СЂРѕРєРѕРІРѕРµ РїСЂРµРґСЃС‚Р°РІР»РµРЅРёРµ
 uint8_t SquarePeriodToString(char target[])
 {
-	//если отключен
+	//РµСЃР»Рё РѕС‚РєР»СЋС‡РµРЅ
 	if(SquarePeriod == 0)
 		return  ui_strcpy(target, "Offline");
 	
-	//если включен - конвертируем в мс и мкс
+	//РµСЃР»Рё РІРєР»СЋС‡РµРЅ - РєРѕРЅРІРµСЂС‚РёСЂСѓРµРј РІ РјСЃ Рё РјРєСЃ
 	SquareConvertInfo *info = &convertInfo[SquarePrescaler-1];
 	
 	uint32_t temp = (uint32_t)info->minValue + ((uint32_t)SquarePeriod - 1) * (uint32_t)info->stepValue;
@@ -180,7 +180,7 @@ uint8_t SquarePeriodToString(char target[])
 		temp = temp / 10;
 	}
 	
-	//добавляем единицу измерений
+	//РґРѕР±Р°РІР»СЏРµРј РµРґРёРЅРёС†Сѓ РёР·РјРµСЂРµРЅРёР№
 	int8_t i = info->numPartLength;
 	
 	target[i++] = info->measureUnit;
@@ -204,11 +204,11 @@ uint8_t SquarePeriodToString(char target[])
 
 uint8_t SquareTopToString(char target[])
 {
-	//если равен нулю, то берется значение половины периода
+	//РµСЃР»Рё СЂР°РІРµРЅ РЅСѓР»СЋ, С‚Рѕ Р±РµСЂРµС‚СЃСЏ Р·РЅР°С‡РµРЅРёРµ РїРѕР»РѕРІРёРЅС‹ РїРµСЂРёРѕРґР°
 	if(SquareTop == 0)
 		return ui_strcpy(target, "half");
 
-	//если нет - вычисляем
+	//РµСЃР»Рё РЅРµС‚ - РІС‹С‡РёСЃР»СЏРµРј
 	SquareConvertInfo *info = &convertInfo[SquarePrescaler-1];
 	
 	uint32_t temp = ((uint32_t)SquareTop + 1) * (uint32_t)info->stepValue;
@@ -225,7 +225,7 @@ uint8_t SquareTopToString(char target[])
 		temp = temp / 10;
 	}
 	
-	//добавляем единицу измерений
+	//РґРѕР±Р°РІР»СЏРµРј РµРґРёРЅРёС†Сѓ РёР·РјРµСЂРµРЅРёР№
 	int8_t i = info->numPartLength;
 	
 	target[i++] = info->measureUnit;
@@ -249,7 +249,7 @@ uint8_t SquareTopToString(char target[])
 
 uint8_t SquarePrescalerToString(char target[])
 {
-	//порядок должен соответствовать таковому в enum
+	//РїРѕСЂСЏРґРѕРє РґРѕР»Р¶РµРЅ СЃРѕРѕС‚РІРµС‚СЃС‚РІРѕРІР°С‚СЊ С‚Р°РєРѕРІРѕРјСѓ РІ enum
 	char ValueName[][5] = {"1", "8", "64", "256", "1024"};
 	
 	uint8_t strnum = SquarePrescaler - 1;
@@ -257,7 +257,7 @@ uint8_t SquarePrescalerToString(char target[])
 	return ui_strcpy(target, ValueName[strnum]);
 }
 
-// public обработчик преобразования в строку
+// public РѕР±СЂР°Р±РѕС‚С‡РёРє РїСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёСЏ РІ СЃС‚СЂРѕРєСѓ
 void SquareItemToString(void *menuItem, char target[])
 {
 	MenuItem *item = (MenuItem *) menuItem;
@@ -289,7 +289,7 @@ void SquareItemToString(void *menuItem, char target[])
 	target[i] = '\0';
 }
 
-// public обработчик событий от органов управления (кнопок)
+// public РѕР±СЂР°Р±РѕС‚С‡РёРє СЃРѕР±С‹С‚РёР№ РѕС‚ РѕСЂРіР°РЅРѕРІ СѓРїСЂР°РІР»РµРЅРёСЏ (РєРЅРѕРїРѕРє)
 ActionProcessed doSquareButtonAction (void *menuItem, eButton button)
 {
 	MenuItem *item = (MenuItem *) menuItem;
@@ -336,7 +336,7 @@ ActionProcessed doSquareButtonAction (void *menuItem, eButton button)
 	}
 }
 
-// выполняет непосредственное изменение настроек работы 16-разрядного таймера
+// РІС‹РїРѕР»РЅСЏРµС‚ РЅРµРїРѕСЃСЂРµРґСЃС‚РІРµРЅРЅРѕРµ РёР·РјРµРЅРµРЅРёРµ РЅР°СЃС‚СЂРѕРµРє СЂР°Р±РѕС‚С‹ 16-СЂР°Р·СЂСЏРґРЅРѕРіРѕ С‚Р°Р№РјРµСЂР°
 inline void SquareModeUpdateSettings()
 {
 	if(SquarePeriod == 0 && TCCR1A != 0)
@@ -366,14 +366,14 @@ inline void SquareModeUpdateSettings()
 	}
 }
 
-// public обработчик событий изменения режима работы
+// public РѕР±СЂР°Р±РѕС‚С‡РёРє СЃРѕР±С‹С‚РёР№ РёР·РјРµРЅРµРЅРёСЏ СЂРµР¶РёРјР° СЂР°Р±РѕС‚С‹
 void doSquareModeAction(void *menuItem, eAction action)
 {
 	if(action == onChange)
 		SquareModeUpdateSettings();
 }
 
-// public загрузка настроек модуля при включении устройства
+// public Р·Р°РіСЂСѓР·РєР° РЅР°СЃС‚СЂРѕРµРє РјРѕРґСѓР»СЏ РїСЂРё РІРєР»СЋС‡РµРЅРёРё СѓСЃС‚СЂРѕР№СЃС‚РІР°
 void loadSquareSettings()
 {
 	SquarePeriod = eeprom_read_word(&SquarePeriodEeprom);
