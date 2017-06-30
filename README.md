@@ -6,9 +6,11 @@ Old. Simple. And almost without analog part. One of my first AVR devices. It was
 course. Published here as an artifact of my home made electronics.
 
 **Schematic**
+
 ![Schematic](/doc/schematic.png?raw=true "Schematic")
 
 **Board**
+
 ![Board](/doc/board.png?raw=true "Board")
 
 **Menu**
